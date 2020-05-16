@@ -1,0 +1,14 @@
+{
+  "name": "repress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  },
+  "dependencies": {
+    "repress-parse": "*",
+    "repress-stringify": "*",
+    "unified": "^9.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "repressjs",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ]
+}
