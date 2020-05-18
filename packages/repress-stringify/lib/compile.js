@@ -4,11 +4,27 @@ const serialize = require('./block-serializer')
 
 module.exports = compile
 
-function compile() {
+function nodeToBlock(tree) {
 
-    if (this.tree.type != 'repress') {
-        return 'Not a valid AST type.'
+    var blocks = []
+
+    if (tree.children.length > 0) {
+        blocks = tree.children.map(function (branch) { return nodeToBlock(branch) })
     }
 
-    return serialize(this.tree.data)
+    if (tree.type == 'root') {
+        return blocks
+    }
+
+    return {
+        blockName: tree.type,
+        attrs: tree.data.meta,
+        innerBlocks: blocks,
+        innerHTML: tree.data.innerHTML,
+        innerContent: tree.value,
+    }
+}
+
+function compile() {
+    return serialize(nodeToBlock(this.tree))
 }
